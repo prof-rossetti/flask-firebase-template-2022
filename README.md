@@ -1,0 +1,1 @@
+# flask-firebase-template-2022
