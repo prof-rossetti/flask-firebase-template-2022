@@ -6,6 +6,7 @@
   + https://github.com/prof-rossetti/react-firebase-auth-template-2021/blob/main/src/components/Products.js
 
   + https://firebase.google.com/docs/firestore/manage-data/add-data#python
+  + https://firebase.google.com/docs/firestore/query-data/queries#python
 
 Simple jinja loop:
 

@@ -14,9 +14,11 @@ user_routes = Blueprint("user_routes", __name__)
 def orders():
     print("USER ORDERS...")
     current_user = session.get("current_user")
-    #user = fetch_user(email=current_user["email"])
-    #orders = fetch_orders(user_email=current_user["email"])
-    orders = []
+
+    service = current_app.config["FIREBASE_SERVICE"]
+
+    orders = service.fetch_user_orders(current_user["email"]) # or []
+
     return render_template("user_orders.html", orders=orders)
 
 #

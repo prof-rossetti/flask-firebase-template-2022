@@ -74,7 +74,6 @@ There will also be an "orders" collection, which will get auto-generated and pop
   + `order_at` (timestamp)
 
 
-
 ### Google APIs Service Account Credentials
 
 In order to fetch data from the database, we'll need to use the credentials generated during the firebase project setup.
