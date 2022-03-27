@@ -49,7 +49,12 @@ Follow [this guide](https://firebase.google.com/docs/firestore/quickstart) to cr
 
 **Products Collection**
 
-After the database has been created, create a new collection called "products" with a number of documents inside. Create each document using an auto-generated "Document Id", as well as the attributes `name` (string), `description` (string), `price` (number) and `url` (string).
+After the database has been created, create a new collection called "products" with a number of documents inside. Create each document using an auto-generated "Document Id", as well as the attributes:
+
+  + `name` (string)
+  + `description` (string)
+  + `price` (number)
+  + `url` (string)
 
 Populate the "products" documents based on the following examples:
 
@@ -101,9 +106,8 @@ FLASK_APP="web_app"
 # GOOGLE OAUTH
 #
 
-# GOOGLE_CLIENT_ID = "..."
-# GOOGLE_CLIENT_SECRET = "..."
-
+GOOGLE_CLIENT_ID = "..."
+GOOGLE_CLIENT_SECRET = "..."
 
 #
 # FIREBASE
@@ -117,42 +121,35 @@ FLASK_APP="web_app"
 #FIREBASE_APP_ID="_______"
 ##FIREBASE_MEASUREMENT_ID="G-XXXXXXXXXX"
 #FIREBASE_DATABASE_URL="https://my-project-123.firebaseio.com"
-
-
-
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 ## Usage
 
-After configuring the cloud firestore database and populating it with products, you should be able to test out the app's ability to fetch them:
+### Firebase Service
+
+After configuring the cloud firestore database and populating it with products, you should be able to test out the app's ability to fetch them (and generate new orders):
 
 ```sh
 python -m app.firebase_service
 ```
 
-Run the local web server:
+### Web Application
+
+Run the local web server (then visit localhost:5000 in a browser):
 
 ```sh
 FLASK_APP=web_app flask run
 ```
 
+
 ## Testing
 
 Instructions TBA
+
+
 
 ## Deploying
 
