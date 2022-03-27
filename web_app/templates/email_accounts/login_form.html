@@ -1,0 +1,39 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "login" %}
+
+{% block content %}
+
+    <div class="container" style="max-width: 350px;">
+
+        <h1>Login</h1>
+
+        <div class="card card-body bg-light mt-3">
+            <form action="/login_with_email/redirect" method="POST">
+                <div class="mb-3">
+                    <label for="email-input" class="form-label">Email:</label>
+                    <input type="text" name="email" id="email-input" class="form-control">
+                </div>
+
+                <div class="mb-3" style="position: relative;">
+                    <label for="password-input" class="form-label">Password:</label>
+                    <input type="password" name="password" id="password-input" class="form-control">
+                    <div id="password-forgot" class="form-text" style="float: right; position: absolute !important; right: 0 !important; top: 0 !important; font-size: 12px;">
+                        <a href="/reset_password/form">Forgot password?</a>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card card-body mt-3">
+            <p class="mt-0 mb-0">
+                Are you new here? <a href="/signup">Create an account</a>.
+            </p>
+        </div>
+
+    </div>
+
+{% endblock %}

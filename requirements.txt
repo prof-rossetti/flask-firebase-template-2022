@@ -1,0 +1,11 @@
+
+python-dotenv
+
+# web application:
+Flask
+# authentication:
+Authlib
+
+requests
+
+pytest

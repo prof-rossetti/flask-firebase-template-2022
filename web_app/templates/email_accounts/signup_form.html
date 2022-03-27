@@ -1,0 +1,53 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "signup" %}
+
+{% block content %}
+
+    <div class="container" style="max-width: 350px;">
+
+        <h1>Signup</h1>
+
+        <div class="card card-body bg-light mt-3">
+            <form action="/signup_with_email/redirect" method="POST">
+
+                <div class="mb-3">
+                    <label for="email-input" class="form-label">Email:</label>
+                    <input type="text" name="email" id="email-input" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password-input" class="form-label">Choose a Password:</label>
+                    <input type="password" name="password" id="password-input" class="form-control">
+                    <div id="password-help" class="form-text">(should be at least 6 characters)</div>
+                </div>
+
+                <hr>
+
+
+                <div class="mb-3">
+                    <label for="first-name-input" class="form-label">First Name:</label>
+                    <input type="text" name="first_name" id="first-name-input" class="form-control">
+                    <div id="first-name-help" class="form-text">(will be displayed with your reservations)</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="last-name-input" class="form-label">Last Name:</label>
+                    <input type="text" name="last_name" id="last-name-input" class="form-control">
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Signup</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="card card-body mt-3">
+            <p class="mt-0 mb-0">
+                Already have an account? <a href="/login">Login</a>.
+            </p>
+        </div>
+
+    </div>
+
+{% endblock %}

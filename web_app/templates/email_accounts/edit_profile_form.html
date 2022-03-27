@@ -1,0 +1,50 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "edit_profile_form" %}
+
+{% block content %}
+
+    <div class="container" style="max-width: 350px;">
+
+        <h1>Edit Profile</h1>
+        <div class="card card-body bg-light mt-3">
+            <form action="/user/profile/update" method="POST">
+
+                <div class="mb-3">
+                    <label for="email-input" class="form-label">Email:</label>
+                    <input disabled type="text" name="email" id="email-input" class="form-control" value="{{ user.email }}" title="Email cannot be changed" style="cursor: not-allowed;">
+                </div>
+
+                <div class="mb-3">
+                    <label for="first-name-input" class="form-label">First Name:</label>
+                    <input type="text" name="first_name" id="first-name-input" class="form-control" value="{{ user.first_name }}">
+                    <div id="first-name-help" class="form-text">(will be displayed with your reservations)</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="last-name-input" class="form-label">Last Name:</label>
+                    <input type="text" name="last_name" id="last-name-input" class="form-control" value="{{ user.last_name }}">
+
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="card card-body mt-3">
+            <p class="mt-0 mb-0">
+                <a href="/user/profile">Back to Profile</a>
+            </p>
+        </div>
+
+        <div class="card card-body mt-3">
+            <p class="mt-0 mb-0">
+                <a href="/user/reset_password">Reset Password</a> (will log you out)
+            </p>
+        </div>
+
+
+    </div>
+{% endblock %}
