@@ -9,11 +9,22 @@
 
     {% if products|length > 0 %}
 
-        <ul>
+        <!--div class="container"-->
+        <div class="row">
             {% for product in products %}
-                <li>{{ product.name }} ... ${{ product.price }} ... {{ product.url }}</li>
+                <div class="col">
+                    <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                        <img class="card-img-top" src="{{ product.url }}" alt="an image of '{{ product.name }}'">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <button class="btn btn-primary">Order now!</button>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
+        <!--/div-->
 
     {% else %}
 
