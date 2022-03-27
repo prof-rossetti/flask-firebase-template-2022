@@ -17,24 +17,23 @@ from web_app.routes.user_routes import user_routes
 
 load_dotenv()
 
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+
+
 SECRET_KEY = os.getenv("SECRET_KEY", default="super secret") # IMPORTANT: override in production
 
 APP_ENV = os.getenv("APP_ENV", default="development") # IMPORTANT: set to "production" in production
-APP_VERSION = os.getenv("APP_VERSION", default="v0.0.1") # TODO: update upon new releases
+APP_VERSION = os.getenv("APP_VERSION", default="v0.0.1") # update upon new releases
 
 APP_TITLE = "My App"
+GA_TRACKER_ID = os.getenv("GA_TRACKER_ID", default="G-OOPS")
+
 # https://icons.getbootstrap.com/
 NAV_ICON_CLASS = "bi-globe"
 # https://getbootstrap.com/docs/5.1/components/navbar/#color-schemes
 # https://getbootstrap.com/docs/5.1/customize/color/#theme-colors
 NAV_COLOR_CLASS = "navbar-dark bg-primary"
-
-GA_TRACKER_ID = os.getenv("GA_TRACKER_ID", default="G-OOPS")
-
-GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
-
-
 
 
 def create_app():
