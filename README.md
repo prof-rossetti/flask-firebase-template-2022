@@ -47,6 +47,7 @@ Click the gear icon to visit the "Project Settings" page, locate the "Your Apps"
 
 Follow [this guide](https://firebase.google.com/docs/firestore/quickstart) to create a Firestore database for the Firebase project you just created. When you create the database, "start in test mode".
 
+**Products Collection**
 
 After the database has been created, create a new collection called "products" with a number of documents inside. Create each document using an auto-generated "Document Id", as well as the attributes `name` (string), `description` (string), `price` (number) and `url` (string).
 
@@ -58,17 +59,14 @@ Strawberries | Juicy organic strawberries. | 4.99 | https://picsum.photos/id/108
 Cup of Tea | An individually-prepared tea or coffee of choice. | 3.49 | https://picsum.photos/id/225/360/200
 Textbook | It has all the answers. | 129.99 | https://picsum.photos/id/24/360/200
 
-> NOTE: it won't let you create the collection without a document
->Also create a new collection called "orders", which will conform to the following structure:
->
->  + `userUid` (string)
->  + `userEmail` (string)
->  + `productId` (string)
->  + `productPrice` (number)
->  + `orderAt` (number)
->
->
 
+**Orders Collection**
+
+There will also be an "orders" collection, which will get auto-generated and populated as a result of running the app. It will have the following structure:
+
+  + `user_email` (string)
+  + `product_info` (map)
+  + `order_at` (timestamp)
 
 
 
