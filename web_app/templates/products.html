@@ -7,6 +7,18 @@
 
     <p class="lead">This is the products page</p>
 
-    <p>Todo: display some products</p>
+    {% if products|length > 0 %}
+
+        <ul>
+            {% for product in products %}
+                <li>{{ product.name }} ... ${{ product.price }} ... {{ product.url }}</li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p>Oops, no products found.</p>
+
+    {% endif %}
 
 {% endblock %}
