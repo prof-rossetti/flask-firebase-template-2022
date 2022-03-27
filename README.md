@@ -27,7 +27,7 @@ This app requires a few services, for user authentication and data storage. Foll
 Visit the [Google Cloud Console](https://console.cloud.google.com). **Create a new project**, and name it. After it is created, select it from the project selection dropdown menu.
 
 
-### Google Firebase Project
+### Firebase Project
 
 Visit the [Google Firebase Console](https://console.firebase.google.com/) to **create a new Firebase project**. When you create the project:
 
@@ -37,7 +37,7 @@ Visit the [Google Firebase Console](https://console.firebase.google.com/) to **c
      1. Choose an existing Google Analytics account or create a new one.
      2. Automatically create a new property in this account.
 
-### Google Firebase Auth
+### Firebase Auth
 
 After creating the Firebase project, visit it's "Authentication" settings, and "Get Started" to **enable the "Google" sign-in option**.
 
@@ -47,13 +47,8 @@ Click the gear icon to visit the "Project Settings" page, locate the "Your Apps"
 
 Follow [this guide](https://firebase.google.com/docs/firestore/quickstart) to create a Firestore database for the Firebase project you just created. When you create the database, "start in test mode".
 
-After the database has been created, create a new collection called "products" with the following structure:
 
-  + `id` (auto-generated)
-  + `name` (string)
-  + `description` (string)
-  + `price` (number)
-  + `url` (string)
+After the database has been created, create a new collection called "products" with a number of documents inside. Create each document using an auto-generated "Document Id", as well as the attributes `name` (string), `description` (string), `price` (number) and `url` (string).
 
 Populate the "products" documents based on the following examples:
 
@@ -63,19 +58,38 @@ Strawberries | Juicy organic strawberries. | 4.99 | https://picsum.photos/id/108
 Cup of Tea | An individually-prepared tea or coffee of choice. | 3.49 | https://picsum.photos/id/225/360/200
 Textbook | It has all the answers. | 129.99 | https://picsum.photos/id/24/360/200
 
+> NOTE: it won't let you create the collection without a document
+>Also create a new collection called "orders", which will conform to the following structure:
+>
+>  + `userUid` (string)
+>  + `userEmail` (string)
+>  + `productId` (string)
+>  + `productPrice` (number)
+>  + `orderAt` (number)
+>
+>
 
-Also create a new collection called "orders", with the following structure:
 
-  + `id` (auto-generated)
-  + `userUid` (string)
-  + `userEmail` (string)
-  + `productId` (string)
-  + `productPrice` (number)
-  + `orderAt` (number)
+
+
+### Google APIs Service Account Credentials
+
+In order to fetch data from the database, we'll need to use the credentials generated during the firebase project setup.
+
+From the [Google API Credentials](https://console.cloud.google.com/apis/credentials?) page, find the service account called something like "firebase-adminsdk", or create a new service account. For the given service account, create new JSON credentials file as necessary from the "Keys" menu, and download the resulting JSON file into the root directory of this repo, specifically named "google-credentials.json".
+
+> NOT NECESSARY?:
+>
+>Then from the root directory of this repo, set the credentials as an >environment variable:
+>
+>```sh
+>export GOOGLE_API_CREDENTIALS="$(< google-credentials.json)"
+>echo $GOOGLE_API_CREDENTIALS
+> ```
 
 ### Google Analytics
 
-Visit https://analytics.google.com/ and navigate to the web property you created via the Firebase project creation process. Visit the web property's admin settings, specifically the "Property Settings", and find the numeric **Property Id** (e.g. "XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable, in this format: `"UA-XXXXXXXXXX-1"` (see "Environment Variables" section below).
+> Visit https://analytics.google.com/ and navigate to the web property you created via the Firebase project creation process. Visit the web property's admin settings, specifically the "Property Settings", and find the numeric **Property Id** (e.g. "XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable, in this format: `"UA-XXXXXXXXXX-1"` (see "Environment Variables" section below).
 
 
 ## Configuration
@@ -97,14 +111,14 @@ FLASK_APP="web_app"
 # FIREBASE
 #
 
-FIREBASE_API_KEY="_______"
-FIREBASE_AUTH_DOMAIN="my-project-123.firebaseapp.com"
-FIREBASE_PROJECT_ID="my-project-123"
-FIREBASE_STORAGE_BUCKET="my-project-123.appspot.com"
-FIREBASE_MESSAGING_SENDER_ID="_______"
-FIREBASE_APP_ID="_______"
-#FIREBASE_MEASUREMENT_ID="G-XXXXXXXXXX"
-FIREBASE_DATABASE_URL="https://my-project-123.firebaseio.com"
+#FIREBASE_API_KEY="_______"
+#FIREBASE_AUTH_DOMAIN="my-project-123.firebaseapp.com"
+#FIREBASE_PROJECT_ID="my-project-123"
+#FIREBASE_STORAGE_BUCKET="my-project-123.appspot.com"
+#FIREBASE_MESSAGING_SENDER_ID="_______"
+#FIREBASE_APP_ID="_______"
+##FIREBASE_MEASUREMENT_ID="G-XXXXXXXXXX"
+#FIREBASE_DATABASE_URL="https://my-project-123.firebaseio.com"
 
 
 
@@ -125,6 +139,12 @@ FIREBASE_DATABASE_URL="https://my-project-123.firebaseio.com"
 
 
 ## Usage
+
+After configuring the cloud firestore database and populating it with products, you should be able to test out the app's ability to fetch them:
+
+```sh
+python -m app.firebase_service
+```
 
 Run the local web server:
 

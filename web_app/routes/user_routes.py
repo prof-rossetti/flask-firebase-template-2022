@@ -5,6 +5,10 @@ from web_app.routes.wrappers import authenticated_route
 
 user_routes = Blueprint("user_routes", __name__)
 
+#
+# USER ORDERS
+#
+
 @user_routes.route("/user/orders")
 @authenticated_route
 def orders():
@@ -15,6 +19,9 @@ def orders():
     orders = []
     return render_template("user_orders.html", orders=orders)
 
+#
+# USER PROFILE
+#
 
 @user_routes.route("/user/profile")
 @authenticated_route
@@ -55,43 +62,3 @@ def profile():
 #    flash("Profile updated!", "success")
 #    return render_template("user_profile.html", user=user)
 #
-
-
-
-
-
-@user_routes.route("/user/gyms")
-@authenticated_route
-def my_gyms():
-
-    user_email = session["current_user"]["email"]
-
-    # todo: single query! (with joins)
-    user = User.query.filter_by(email=user_email).first()
-    gyms = Gym.query.join(Membership).filter(Membership.user_id==user.id).all()
-
-    #if any(gyms):
-    #    return render_template("user_gyms.html", gyms=gyms)
-    #else:
-    #    flash("Oh, no gym memberships found. Please select a gym and provide an access code to continue.", "warning")
-    #    return redirect("/gyms")
-    return render_template("user_gyms.html", gyms=gyms)
-
-
-@user_routes.route("/user/reservations")
-@authenticated_route
-def my_reservations():
-    user_email = session["current_user"]["email"]
-
-    user = User.query.filter_by(email=user_email).first()
-    # TODO: single query maybe?
-    reservations = user.upcoming_reservations()
-
-    #if any(reservations):
-    #    return render_template("user_reservations.html", user=user, reservations=reservations)
-    #else:
-    #    flash("Oh, no reservations found. Why don't you try making one?", "warning")
-    #    return redirect("/user/gyms")
-
-
-    return render_template("user_reservations.html", user=user, reservations=reservations, relative_weekday=relative_weekday)
