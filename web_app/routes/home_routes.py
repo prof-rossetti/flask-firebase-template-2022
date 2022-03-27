@@ -1,6 +1,4 @@
-from flask import Blueprint, render_template, session
-
-from app.firebase_service import fetch_products
+from flask import Blueprint, render_template, current_app #, session
 
 home_routes = Blueprint("home_routes", __name__)
 
@@ -15,5 +13,6 @@ def about():
 
 @home_routes.route("/products")
 def products():
-    products = fetch_products()
+    service = current_app.config["FIREBASE_SERVICE"]
+    products = service.fetch_products()
     return render_template("products.html", products=products)

@@ -6,9 +6,8 @@ from dotenv import load_dotenv
 from flask import Flask
 from authlib.integrations.flask_client import OAuth
 
-#from app import APP_ENV, APP_VERSION
-#from app.firebase_service import FirebaseService
-#from app.gcal_service import SCOPES as GCAL_SCOPES
+from app import APP_ENV, APP_VERSION
+from app.firebase_service import FirebaseService
 #from web_app.firebase_auth import FirebaseAuth, FIREBASE_CONFIG
 
 from web_app.routes.home_routes import home_routes
@@ -17,23 +16,22 @@ from web_app.routes.user_routes import user_routes
 
 load_dotenv()
 
-GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
-
-
 SECRET_KEY = os.getenv("SECRET_KEY", default="super secret") # IMPORTANT: override in production
 
-APP_ENV = os.getenv("APP_ENV", default="development") # IMPORTANT: set to "production" in production
-APP_VERSION = os.getenv("APP_VERSION", default="v0.0.1") # update upon new releases
+GA_TRACKER_ID = os.getenv("GA_TRACKER_ID", default="G-OOPS") # obtain from google analytics / firebase
 
 APP_TITLE = "My App"
-GA_TRACKER_ID = os.getenv("GA_TRACKER_ID", default="G-OOPS")
 
 # https://icons.getbootstrap.com/
 NAV_ICON_CLASS = "bi-globe"
+
 # https://getbootstrap.com/docs/5.1/components/navbar/#color-schemes
 # https://getbootstrap.com/docs/5.1/customize/color/#theme-colors
 NAV_COLOR_CLASS = "navbar-dark bg-primary"
+
+# for google oauth login:
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 
 
 def create_app():
@@ -85,7 +83,7 @@ def create_app():
     # SERVICES
     #
 
-    #app.config["FIREBASE_SERVICE"] = FirebaseService()
+    app.config["FIREBASE_SERVICE"] = FirebaseService()
 
     #
     # ROUTES

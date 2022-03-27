@@ -7,12 +7,12 @@ from firebase_admin import credentials, initialize_app, firestore #, auth
 
 CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
 
-def fetch_products():
-    return []
 
 class FirebaseService:
     """
     Fetches data from the cloud firestore database.
+
+    Uses locally downloaded credentials JSON file.
     """
     def __init__(self):
         self.creds = credentials.Certificate(CREDENTIALS_FILEPATH)
