@@ -16,11 +16,11 @@ def google_oauth_callback():
     print("GOOGLE OAUTH CALLBACK...")
     oauth = current_app.config["OAUTH"]
     token = oauth.google.authorize_access_token()
-    user = token.get("userinfo")
-    if user:
+    user_info = token.get("userinfo")
+    if user_info:
         print("STORING USER INFO IN THE SESSION...")
-        print(user)
-        session["user"] = user # add user info to the session
+        print(user_info)
+        session["current_user"] = user_info # add user info to the session
     else:
         print("NO USER INFO")
     return redirect("/")
@@ -28,5 +28,5 @@ def google_oauth_callback():
 @auth_routes.route("/logout")
 def logout():
     print("LOGGING OUT...")
-    session.pop("user", None) # remove user info from the session
+    session.pop("current_user", None) # remove user info from the session
     return redirect("/")

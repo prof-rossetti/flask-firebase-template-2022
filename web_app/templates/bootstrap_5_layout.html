@@ -65,8 +65,9 @@
         https://getbootstrap.com/docs/5.0/components/navbar/
     -->
     {% set public_nav = [
-      ('/login', 'login', 'Login'),
+      ('/about', 'about', 'About'),
       ('/products', 'products', 'Products'),
+      ('/login', 'login', 'Login'),
     ] -%}
 
     {% set protected_nav = [
@@ -140,51 +141,17 @@
         </div>
 
         <footer style="margin-top:2em; margin-bottom:2em;">
-        <hr>
-
-            <!--p class="small">
-                &copy; Copyright 2021 Data Creative, LLC |
-                <a href="/about">About</a> |
-                <a href="mailto:datacreativellc@gmail.com">Contact</a> |
-                <a href="/tos">Terms</a> |
-                <a href="/privacy">Privacy</a> |
-                <a href="/roadmap">Roadmap</a>
-            </p-->
-
-
-
-            <!--div>
-                <p class="small">
-                    &copy; Copyright 2021 Data Creative, LLC
-                </p>
-                <p class="small">
-                    <a href="/about">About</a> |
-                    <a href="mailto:datacreativellc@gmail.com">Contact</a> |
-                    <a href="/tos">Terms</a> |
-                    <a href="/privacy">Privacy</a> |
-                    <a href="/roadmap">Roadmap</a>
-                </p>
-
-            </div-->
-
+            <hr>
             <div class="row">
                 <div class="col-sm-6" style="display: inline; margin-bottom: 5px;">
-                    <p class="small" style="display: inline;">
-                        &copy; Copyright 2022 YOUR NAME HERE
+                    <p class="small">
+                        &copy; Copyright 2022 Your Name Here
                     </p>
-                    <p class="small" style="display: inline;">
-                        <a href="https://github.com/prof-rossetti/flask-firebase-template-2022">Flask Firebase Template</a>
-                        by Michael Rossetti
-                    </p>
-                </div>
-
-                <div class="col-sm-6 footer-float-right" style="display: inline; margin-left: 0;">
-                    <p class="small text-nowrap" style="display: inline;">
-                        <a href="/about">About</a> |
+                    <p class="small">
+                        Made with the <a href="https://github.com/prof-rossetti/flask-firebase-template-2022">Flask Firebase Template</a>
                     </p>
                 </div>
             </div>
-
         </footer>
     </div>
 
