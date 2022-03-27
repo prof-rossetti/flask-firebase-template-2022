@@ -18,5 +18,5 @@ def authenticated_route(view):
         else:
             print("UNAUTHENTICATED...")
             flash("Unauthenticated. Please login!", "warning")
-            return redirect("/")
+            return redirect("/login")
     return wrapped_view
