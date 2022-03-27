@@ -1,0 +1,40 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "user_orders" %}
+
+{% block content %}
+
+    <h1>User Orders</h1>
+
+    <p class="lead">Here are your recent orders:</p>
+
+    {% if orders|length == 0 %}
+        <p class="lead" >Oh, you have not yet placed an order. Please visit the
+            <a href="/products">products page</a>!
+        </p>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Order Id</th>
+                        <th scope="col" class="text-start">Order Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>
+                            {{ order.id }}
+                        </td>
+                        <td class="text-start align-middle">
+                            {{ order.price }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock %}
