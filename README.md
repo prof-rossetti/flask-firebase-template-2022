@@ -2,8 +2,9 @@
 
 A web application starter template, created in Python with the Flask framework. Allows users to login with their Google accounts (via OAuth). Interfaces with a Google Cloud Firestore database.
 
-> NOTE: currently the login with google functionality works, but the login with email and password is not yet implemented.
+![](https://user-images.githubusercontent.com/1328807/160312385-7ffbbada-4363-4b48-873d-9eca868afef0.png)
 
+> NOTE: currently the login with google functionality works, but the login with email and password is not yet implemented.
 
 ## Prerequisites
 

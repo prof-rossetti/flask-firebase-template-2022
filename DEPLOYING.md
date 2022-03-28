@@ -8,7 +8,6 @@ Setup a production "OAuth Client". Obtain the web client's `GOOGLE_CLIENT_ID` an
 
   + https://YOUR_SERVER_NAME.herokuapp.com/auth/google/callback
 
-
 Download the production service account credentials JSON file and store it in this repo as "google-credentials-prod.json", and use it when configuring the server (see below).
 
 ## Server Setup
