@@ -1,5 +1,7 @@
 # Credits, Notes, References
 
+Developing:
+
   + https://github.com/authlib/demo-oauth-client/tree/master/flask-google-login
 
   + https://github.com/prof-rossetti/react-firebase-auth-template-2021
@@ -17,3 +19,7 @@ Simple jinja loop:
     {% endfor %}
 </ul>
 ```
+
+Deploying:
+
+  + https://github.com/elishaterada/heroku-google-application-credentials-buildpack/compare/master...buyersight:master

@@ -33,13 +33,14 @@ heroku config:set GOOGLE_CLIENT_SECRET="____________"
 
 ## Server Deploy
 
-Deploy:
+Deploying:
 
 ```sh
 git push heroku main
 #git push heroku mybranch:main
 ```
 
+Configuring remote credentials file:
 
 ```sh
 #heroku buildpacks:set heroku/python
@@ -50,5 +51,5 @@ heroku buildpacks:add https://github.com/s2t2/heroku-google-application-credenti
 heroku config:set GOOGLE_CREDENTIALS="$(< google-credentials-prod.json)"
 
 # references the remote credentials file on the server:
-heroku config:set GOOGLE_APPLICATION_CREDENTIALS="google-credentials.json"
+#heroku config:set GOOGLE_APPLICATION_CREDENTIALS="google-credentials.json"
 ```
