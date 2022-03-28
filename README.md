@@ -152,4 +152,4 @@ Instructions TBA
 
 ## Deploying
 
-Instructions TBA
+See the [Deployer's Guide](/DEPLOYING.md) for instructions on deploying to a production server hosted by Heroku.

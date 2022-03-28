@@ -16,7 +16,8 @@ Authlib==1.0.0
 firebase-admin==5.0.0
 
 
-
+# production web server (for heroku):
+gunicorn
 
 # testing:
 pytest
