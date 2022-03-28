@@ -4,9 +4,11 @@ from flask import session, redirect, flash
 
 def authenticated_route(view):
     """
-    Wrap a route with this decorator to ensure it has access to the "current_user" object
+    Wrap a route with this decorator to prevent unauthenticated access.
 
-    Assume the route will have access to the "current_user" object.
+    If the user is logged in, the route will have access to the "current_user" info stored in the session.
+
+    If user is not logged in, the route will redirect them to the login page.
 
     See: https://flask.palletsprojects.com/en/2.0.x/tutorial/views/#require-authentication-in-other-views
     """

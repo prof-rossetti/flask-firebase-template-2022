@@ -5,7 +5,7 @@ from pprint import pprint
 from datetime import datetime, timezone
 from operator import itemgetter
 
-from firebase_admin import credentials, initialize_app, firestore #, auth
+from firebase_admin import credentials, initialize_app, firestore
 
 CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
 
@@ -42,13 +42,9 @@ class FirebaseService:
         """
         Params :
 
-            new_order (dict) like ...
+            user_email (str)
 
-                {
-                    "user_email": user_email, #> str
-                    "product_id": product_id, #> dict
-                    "product_info": product_info,
-                }
+            product_info (dict) with name, description, price, and url
 
         """
         orders_ref = self.db.collection("orders")
