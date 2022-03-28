@@ -2,7 +2,9 @@
 
 # Ignore Google Service Account credentials JSON file(s)
 google-credentials.json
+google-credentials-prod.json
 *-credentials.json
+google-credentials*.json
 
 
 
