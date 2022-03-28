@@ -1,11 +1,24 @@
 # flask-firebase-template-2022
 
+A web application starter template, created in Python with the Flask framework. Allows users to login with their Google accounts (via OAuth). Interfaces with a Google Cloud Firestore database.
+
+> NOTE: currently the login with google functionality works, but the login with email and password is not yet implemented.
+
+
+## Prerequisites
+
+This application requires a Python development environment:
+
+  + Git
+  + Anaconda, Python, Pip
+
+For beginners, here are some instructions for how to install Anaconda, and [set up your local Python development environment](https://github.com/prof-rossetti/intro-to-python/blob/main/exercises/local-dev-setup/README.md#anaconda-python-and-pip).
 
 ## Repo Setup
 
-Clone this repo onto your local machine. Navigate there from the command-line.
+Make a copy of this template repo (as necessary). Clone your copy of the repo onto your local machine. Navigate there from the command-line.
 
-Setup and activate a new virtual environment:
+Setup and activate a new Anaconda virtual environment:
 
 ```sh
 conda create -n flask-firebase-env python=3.8
@@ -26,6 +39,17 @@ This app requires a few services, for user authentication and data storage. Foll
 
 Visit the [Google Cloud Console](https://console.cloud.google.com). **Create a new project**, and name it. After it is created, select it from the project selection dropdown menu.
 
+### Google OAuth Client
+
+Visit the [API Credentials](https://console.cloud.google.com/apis/credentials) page for your Google Cloud project. Click the button with the plus icon to "Create Credentials", and choose "Create OAuth Client Id".
+
+Click to "Configure Consent Screen". Leave the domain info blank, and leave the defaults / skip lots of the setup for now. If/when you deploy your app to a production server, you can return to populating this info (or you will be using a different project).
+
+Return to actually creating the "OAuth Client Id". Choose a "Web application" type, give it a name, and set the following "Authorized Redirect URIs" (for now, while the project is still in development):
+
+  + http://localhost:5000/auth/google/callback
+
+After the client is created, note the `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, and set them as environment variables (see configuration section below).
 
 ### Firebase Project
 
@@ -39,9 +63,12 @@ Visit the [Google Firebase Console](https://console.firebase.google.com/) to **c
 
 ### Firebase Auth
 
-After creating the Firebase project, visit it's "Authentication" settings, and "Get Started" to **enable the "Google" sign-in option**.
+Instructions TBA
 
-Click the gear icon to visit the "Project Settings" page, locate the "Your Apps" section, and **create a Web App**, or use an existing one. When you create the app (or in the future by visiting its settings page, finding the "Firebase SDK snippet", and clicking "Config"), you'll see the **Firebase SDK credentials**. Use these values for the `FIREBASE_` environment variables (see "Configuration" section below).
+> After creating the Firebase project, visit it's "Authentication" settings, and "Get Started" to **enable the "Google" sign-in option**.
+
+> Click the gear icon to visit the "Project Settings" page, locate the "Your Apps" section, and **create a Web App**, or use an existing one. When you create the app (or in the future by visiting its settings page, finding the "Firebase SDK snippet", and clicking "Config"), you'll see the **Firebase SDK credentials**. Use these values for the `FIREBASE_` environment variables (see "Configuration" section below).
+
 
 ### Firestore Database Setup
 
@@ -76,27 +103,22 @@ There will also be an "orders" collection, which will get auto-generated and pop
 
 ### Google APIs Service Account Credentials
 
-In order to fetch data from the database, we'll need to use the credentials generated during the firebase project setup.
+To fetch data from the Firestore database (and use other Google APIs), the app will need access to a local "service account" credentials file.
 
-From the [Google API Credentials](https://console.cloud.google.com/apis/credentials?) page, find the service account called something like "firebase-adminsdk", or create a new service account. For the given service account, create new JSON credentials file as necessary from the "Keys" menu, and download the resulting JSON file into the root directory of this repo, specifically named "google-credentials.json".
+From the [Google API Credentials](https://console.cloud.google.com/apis/credentials?) page, find the service account created during the firebase project setup process (it should be called something like "firebase-adminsdk"), or feel free to create a new service account.
 
-> NOT NECESSARY?:
->
->Then from the root directory of this repo, set the credentials as an >environment variable:
->
->```sh
->export GOOGLE_API_CREDENTIALS="$(< google-credentials.json)"
->echo $GOOGLE_API_CREDENTIALS
-> ```
+For the given service account, create new JSON credentials file as necessary from the "Keys" menu, then download the resulting JSON file into the root directory of this repo, specifically named "google-credentials.json".
 
 ### Google Analytics
+
+Instructions TBA
 
 > Visit https://analytics.google.com/ and navigate to the web property you created via the Firebase project creation process. Visit the web property's admin settings, specifically the "Property Settings", and find the numeric **Property Id** (e.g. "XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable, in this format: `"UA-XXXXXXXXXX-1"` (see "Environment Variables" section below).
 
 
 ## Configuration
 
-Create a file called ".env" in the root directory of this repository, and specify your own credentials, as obtained in the "Setup" section above:
+Create a file called ".env" in the root directory of this repository, and populate it with environment variables to specify your own credentials, as obtained in the "Setup" section above:
 
 ```sh
 FLASK_APP="web_app"
@@ -129,7 +151,7 @@ GOOGLE_CLIENT_SECRET = "..."
 
 ### Firebase Service
 
-After configuring the cloud firestore database and populating it with products, you should be able to test out the app's ability to fetch them (and generate new orders):
+After configuring the cloud firestore database and populating it with products, you should be able to test out the app's ability to fetch products (and generate new orders):
 
 ```sh
 python -m app.firebase_service

@@ -4,16 +4,20 @@
 
 Ideally create a separate Google Cloud project and Firebase project for your user-facing production application, following the instructions in the README.
 
-Setup a production web client, and obtain its `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+Setup a production "OAuth Client". Obtain the web client's `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`. After you create your server for the first time (see server setup instructions below), you'll know what it's URL is, at which point your can return to this section to set the following "Authorized Redirect URIs":
+
+  + https://YOUR_SERVER_NAME.herokuapp.com/auth/google/callback
+
 
 Download the production service account credentials JSON file and store it in this repo as "google-credentials-prod.json", and use it when configuring the server (see below).
 
 ## Server Setup
 
-Provisioning the server (first time only), using a name like "flask-firebase-template-2022" (but yours will need to be different / unique):
+Provisioning the server (first time only), using a name like "flask-firebase-template-2022" (but yours will need to be different / unique, i.e. YOUR_SERVER_NAME):
 
 ```sh
-heroku create flask-firebase-template-2022
+#heroku create flask-firebase-template-2022
+heroku create YOUR_SERVER_NAME
 ```
 
 Set environment variables (first time only):
