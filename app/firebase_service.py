@@ -38,6 +38,10 @@ class FirebaseService:
     # ORDERS
     #
 
+    @property
+    def orders_ref(self):
+        return self.db.collection("orders")
+
     def create_order(self, user_email, product_info):
         """
         Params :
@@ -47,27 +51,22 @@ class FirebaseService:
             product_info (dict) with name, description, price, and url
 
         """
-        orders_ref = self.db.collection("orders")
-        order_ref = orders_ref.document() # new document with auto-generated id
-
+        new_order_ref = self.orders_ref.document() # new document with auto-generated id
         new_order = {
             "user_email": user_email,
             "product_info": product_info,
             "order_at": generate_timestamp()
         }
-        results = order_ref.set(new_order)
+        results = new_order_ref.set(new_order)
         #print(results) #> {update_time: {seconds: 1648419942, nanos: 106452000}}
         return new_order, results
 
     def fetch_orders(self):
-        orders_ref = self.db.collection("orders")
-        orders = [doc.to_dict() for doc in orders_ref.stream()]
+        orders = [doc.to_dict() for doc in self.orders_ref.stream()]
         return orders
 
     def fetch_user_orders(self, user_email):
-        orders_ref = self.db.collection("orders")
-
-        query_ref = orders_ref.where("user_email", "==", user_email)
+        query_ref = self.orders_ref.where("user_email", "==", user_email)
 
         # sorting requires configuration of a composite index on the "orders" collection,
         # ... so to keep it simple for students, we'll sort manually (see below)
@@ -82,7 +81,7 @@ class FirebaseService:
             #breakpoint()
             #order["order_at"] = order["order_at"].strftime("%Y-%m-%d %H:%M")
             orders.append(order)
-        # sorting so latest
+        # sorting so latest order is first
         orders = sorted(orders, key=itemgetter("order_at"), reverse=True)
         return orders
 
