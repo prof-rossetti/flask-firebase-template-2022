@@ -1,0 +1,78 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "login" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='strike.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='google-login.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container" style="max-width: 350px;">
+        <h1>Login</h1>
+
+        <!--p class="lead mb-3">For existing users.</p-->
+        <p class="lead mb-3">For new or existing users.</p>
+
+        <div class="d-grid gap-2">
+
+
+            <a href="/auth/google/login" class="google-login-button btn btn-block position-relative">
+                <span class="google-login-button-wrapper position-absolute top-50 start-0 translate-middle-y">
+                    <img class="google-logo"
+                        src="{{ url_for('static', filename='google-button/rainbow-g-logo.svg') }}"
+                        alt="Rainbow G Logo"
+                    >
+                </span>
+
+                <span class="google-login-button-text">Login with Google</span>
+            </a>
+
+        </div>
+
+
+        <!--
+
+        EMAIL PASSWORD ACCOUNT STUFF (NOT IMPLEMENTED)
+
+
+        <div class="strike mt-3 mb-3">
+            <span>or</span>
+        </div>
+
+
+        <div class="card card-body bg-light mt-3">
+            <form action="/auth/email_password/redirect" method="POST">
+                <div class="mb-3">
+                    <label for="email-input" class="form-label">Email:</label>
+                    <input type="text" name="email" id="email-input" class="form-control">
+                </div>
+
+                <div class="mb-3" style="position: relative;">
+                    <label for="password-input" class="form-label">Password:</label>
+                    <input type="password" name="password" id="password-input" class="form-control">
+                    <div id="password-forgot" class="form-text" style="float: right; position: absolute !important; right: 0 !important; top: 0 !important; font-size: 12px;">
+                        <a href="/auth/email_password/reset_password/form">Forgot password?</a>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card card-body mt-3">
+            <p class="mt-0 mb-0">
+                Are you new here? <a href="/signup">Create an account</a>.
+            </p>
+        </div>
+
+        -->
+
+    </div>
+
+
+
+
+{% endblock %}

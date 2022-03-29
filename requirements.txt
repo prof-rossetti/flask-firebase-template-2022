@@ -1,0 +1,18 @@
+
+# reading environment vars:
+python-dotenv
+
+# web application:
+Flask==2.0.0
+
+# auth (login with google via oauth):
+Authlib==1.0.0
+
+# database (cloud firestore):
+firebase-admin==5.0.0
+
+# production web server (for heroku):
+gunicorn
+
+# testing:
+pytest

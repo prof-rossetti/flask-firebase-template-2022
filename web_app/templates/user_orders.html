@@ -1,0 +1,52 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "user_orders" %}
+
+{% block content %}
+
+    <h1>User Orders</h1>
+
+    <p class="lead">Here are your recent orders:</p>
+
+    {% if orders|length == 0 %}
+        <p class="lead" >Oh, you have not yet placed an order. Please visit the
+            <a href="/products">products page</a>!
+        </p>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">User Email</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Timestamp</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>
+                            {{ order.id }}
+                        </td>
+                        <td>
+                            {{ order.user_email }}
+                        </td>
+                        <td>
+                            {{ order.product_info.name }}
+                        </td>
+                        <td>
+                            {{ order.product_info.price }}
+                        </td>
+                        <td>
+                            {{ order.order_at.strftime('%Y-%m-%d %H:%M') }} UTC
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock %}

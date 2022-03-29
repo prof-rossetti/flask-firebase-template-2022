@@ -1,0 +1,34 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "user_profile" %}
+
+{% block content %}
+
+    <div class="container" style="max-width: 350px;">
+
+        <h1>User Profile</h1>
+        <div class="card card-body bg-light mt-3">
+
+                <div class="mb-3">
+                    <label for="email-input" class="form-label">Email:</label>
+                    <input disabled type="text" name="email" id="email-input" class="form-control" value="{{ user.email }}" title="Email cannot be changed" style="cursor: not-allowed;">
+                </div>
+
+                <div class="mb-3">
+                    <label for="first-name-input" class="form-label">First Name:</label>
+                    <input disabled type="text" name="first_name" id="first-name-input" class="form-control" value="{{ user.given_name }}" >
+                </div>
+
+                <div class="mb-3">
+                    <label for="last-name-input" class="form-label">Last Name:</label>
+                    <input disabled type="text" name="last_name" id="last-name-input" class="form-control" value="{{ user.family_name }}">
+                </div>
+
+        </div>
+
+        <div class="card card-body mt-3">
+            <p class="mt-0 mb-0">
+                <a href="/logout">Logout</a>
+            </p>
+        </div>
+
+{% endblock %}
