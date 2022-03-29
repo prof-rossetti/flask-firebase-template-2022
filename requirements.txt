@@ -8,13 +8,8 @@ Flask==2.0.0
 # auth (login with google via oauth):
 Authlib==1.0.0
 
-# auth (login with email/password):
-#pyrebase
-#jwt
-
 # database (cloud firestore):
 firebase-admin==5.0.0
-
 
 # production web server (for heroku):
 gunicorn
