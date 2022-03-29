@@ -8,11 +8,6 @@
         <h1>User Profile</h1>
         <div class="card card-body bg-light mt-3">
 
-                <!--div class="mb-3">
-                    <label for="account-type-input" class="form-label">Account Type:</label>
-                    <input disabled type="text" name="account-type" id="account-type-input" class="form-control" value="{{ user.account_type }}" title="Account type cannot be changed" style="cursor: not-allowed;">
-                </div-->
-
                 <div class="mb-3">
                     <label for="email-input" class="form-label">Email:</label>
                     <input disabled type="text" name="email" id="email-input" class="form-control" value="{{ user.email }}" title="Email cannot be changed" style="cursor: not-allowed;">
@@ -28,26 +23,7 @@
                     <input disabled type="text" name="last_name" id="last-name-input" class="form-control" value="{{ user.family_name }}">
                 </div>
 
-                <!--div class="d-grid gap-2">
-                    <button class="btn btn-secondary">Edit Profile</button>
-                </div-->
         </div>
-
-        {% if user.provider_id == "password" %}
-
-            <div class="card card-body mt-3">
-                <p class="mt-0 mb-0">
-                    <a href="/user/profile/edit">Edit Profile</a>
-                </p>
-            </div>
-
-            <!--div class="card card-body mt-3">
-                <p class="mt-0 mb-0">
-                    <a href="/user/reset_password">Reset Password</a> (will log you out as well)
-                </p>
-            </div-->
-
-        {% endif %}
 
         <div class="card card-body mt-3">
             <p class="mt-0 mb-0">
