@@ -30,6 +30,9 @@
         </div>
 
 
+        <!--
+
+        EMAIL PASSWORD ACCOUNT STUFF (NOT IMPLEMENTED)
 
 
         <div class="strike mt-3 mb-3">
@@ -37,19 +40,8 @@
         </div>
 
 
-
-
-
-
-        <!--div class="d-grid gap-2">
-            <a href="/login_with_email/form" class="btn btn-outline-secondary">
-                <i class="bi bi-envelope"></i>
-                Email / Password
-            </a>
-        </div-->
-
         <div class="card card-body bg-light mt-3">
-            <form action="/login_with_email/redirect" method="POST">
+            <form action="/auth/email_password/redirect" method="POST">
                 <div class="mb-3">
                     <label for="email-input" class="form-label">Email:</label>
                     <input type="text" name="email" id="email-input" class="form-control">
@@ -59,7 +51,7 @@
                     <label for="password-input" class="form-label">Password:</label>
                     <input type="password" name="password" id="password-input" class="form-control">
                     <div id="password-forgot" class="form-text" style="float: right; position: absolute !important; right: 0 !important; top: 0 !important; font-size: 12px;">
-                        <a href="/reset_password/form">Forgot password?</a>
+                        <a href="/auth/email_password/reset_password/form">Forgot password?</a>
                     </div>
                 </div>
 
@@ -74,6 +66,8 @@
                 Are you new here? <a href="/signup">Create an account</a>.
             </p>
         </div>
+
+        -->
 
     </div>
 

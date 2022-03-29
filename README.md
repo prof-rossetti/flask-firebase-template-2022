@@ -62,13 +62,13 @@ Visit the [Google Firebase Console](https://console.firebase.google.com/) to **c
      1. Choose an existing Google Analytics account or create a new one.
      2. Automatically create a new property in this account.
 
-### Firebase Auth
+### Google Analytics
 
-Instructions TBA
+From the Firebase project's "Analytics Dashboard" menu, find the web property that was created during the previous step.
 
-> After creating the Firebase project, visit it's "Authentication" settings, and "Get Started" to **enable the "Google" sign-in option**.
+If there was an issue and you don't see anything, no worries - you can click the web icon to "Add Firebase to your web app". Give the app a name and register it (hosting not necessary).
 
-> Click the gear icon to visit the "Project Settings" page, locate the "Your Apps" section, and **create a Web App**, or use an existing one. When you create the app (or in the future by visiting its settings page, finding the "Firebase SDK snippet", and clicking "Config"), you'll see the **Firebase SDK credentials**. Use these values for the `FIREBASE_` environment variables (see "Configuration" section below).
+You should now be able to visit [Google Analytics](https://analytics.google.com/) and find the web property you created. From Google Analytics, visit the web property's admin settings, specifically the "Property Settings", and find the numeric **Property Id** (e.g. "XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable, in this format: `"UA-XXXXXXXXXX-1"` (see "Environment Variables" section below).
 
 
 ### Firestore Database Setup
@@ -101,20 +101,18 @@ There will also be an "orders" collection, which will get auto-generated and pop
   + `product_info` (map)
   + `order_at` (timestamp)
 
+**Users Collection**
+
+In the future, if you want to store more information about your users, for example their settings, preferences, and activities, you can create a "users" collection and extend this app's functionality as desired.
 
 ### Google APIs Service Account Credentials
 
 To fetch data from the Firestore database (and use other Google APIs), the app will need access to a local "service account" credentials file.
 
-From the [Google API Credentials](https://console.cloud.google.com/apis/credentials?) page, find the service account created during the firebase project setup process (it should be called something like "firebase-adminsdk"), or feel free to create a new service account.
+From the [Google API Credentials](https://console.cloud.google.com/apis/credentials) page, find the service account created during the firebase project setup process (it should be called something like "firebase-adminsdk"), or feel free to create a new service account.
 
-For the given service account, create new JSON credentials file as necessary from the "Keys" menu, then download the resulting JSON file into the root directory of this repo, specifically named "google-credentials.json".
+For the chosen service account, create new JSON credentials file as necessary from the "Keys" menu, then download the resulting JSON file into the root directory of this repo, specifically named "google-credentials.json".
 
-### Google Analytics
-
-Instructions TBA
-
-> Visit https://analytics.google.com/ and navigate to the web property you created via the Firebase project creation process. Visit the web property's admin settings, specifically the "Property Settings", and find the numeric **Property Id** (e.g. "XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable, in this format: `"UA-XXXXXXXXXX-1"` (see "Environment Variables" section below).
 
 
 ## Configuration
@@ -127,22 +125,13 @@ FLASK_APP="web_app"
 #
 # GOOGLE OAUTH
 #
-
 GOOGLE_CLIENT_ID = "..."
 GOOGLE_CLIENT_SECRET = "..."
 
 #
-# FIREBASE
+# GOOGLE ANALYTICS
 #
-
-#FIREBASE_API_KEY="_______"
-#FIREBASE_AUTH_DOMAIN="my-project-123.firebaseapp.com"
-#FIREBASE_PROJECT_ID="my-project-123"
-#FIREBASE_STORAGE_BUCKET="my-project-123.appspot.com"
-#FIREBASE_MESSAGING_SENDER_ID="_______"
-#FIREBASE_APP_ID="_______"
-##FIREBASE_MEASUREMENT_ID="G-XXXXXXXXXX"
-#FIREBASE_DATABASE_URL="https://my-project-123.firebaseio.com"
+GA_TRACKER_ID="UA-XXXXXXX-1"
 ```
 
 
@@ -152,7 +141,7 @@ GOOGLE_CLIENT_SECRET = "..."
 
 ### Firebase Service
 
-After configuring the cloud firestore database and populating it with products, you should be able to test out the app's ability to fetch products (and generate new orders):
+After configuring the Firestore database and populating it with products, you should be able to test out the app's ability to fetch products (and generate new orders):
 
 ```sh
 python -m app.firebase_service

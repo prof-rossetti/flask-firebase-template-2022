@@ -4,15 +4,19 @@ from flask import Blueprint, session, redirect, url_for, render_template #reques
 
 auth_routes = Blueprint("auth_routes", __name__)
 
-@auth_routes.route("/signup")
-def signup():
-    print("SIGNUP...")
-    return render_template("signup.html")
+# signup route only for email password auth (not implemented)
+#@auth_routes.route("/signup")
+#def signup():
+#    print("SIGNUP...")
+#    return render_template("signup.html")
 
 @auth_routes.route("/login")
 def login():
     print("LOGIN...")
+    # this is a login page for either google or email/password auth (but the latter not implemented at the moment):
     return render_template("login.html")
+    # if not using email/password auth, consider shortcut directly to google login:
+    #return redirect("/auth/google/login")
 
 @auth_routes.route("/auth/google/login")
 def google_login():
@@ -58,3 +62,19 @@ def logout():
     print("LOGGING OUT...")
     session.pop("current_user", None) # remove user info from the session
     return redirect("/")
+
+#
+# EMAIL / PASSWORD AUTH (NOT IMPLEMENTED)
+#
+
+#@auth_routes.route("/auth/email_password/signup")
+#def email_password_signup():
+#    return ...
+
+#@auth_routes.route("/auth/email_password/login")
+#def email_password_login():
+#    return ...
+
+#@auth_routes.route("/auth/email_password/reset_password3")
+#def email_password_reset():
+#    return ...
