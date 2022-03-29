@@ -31,7 +31,7 @@ heroku config:set SECRET_KEY="________"
 heroku config:set GOOGLE_CLIENT_ID="______.apps.googleusercontent.com"
 heroku config:set GOOGLE_CLIENT_SECRET="____________"
 
-#heroku config:set GA_TRACKER_ID="G-________"
+heroku config:set GA_TRACKER_ID="G-________"
 ```
 
 ## Server Deploy
@@ -53,6 +53,6 @@ heroku buildpacks:add https://github.com/s2t2/heroku-google-application-credenti
 # ... references local creds file (e.g. "google-credentials-prod.json"):
 heroku config:set GOOGLE_CREDENTIALS="$(< google-credentials-prod.json)"
 
-# references the remote credentials file on the server:
+# references the remote credentials file on the server (not necessary right now):
 #heroku config:set GOOGLE_APPLICATION_CREDENTIALS="google-credentials.json"
 ```

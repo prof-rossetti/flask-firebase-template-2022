@@ -52,7 +52,21 @@ def google_oauth_callback():
         #>     'exp': __________
         #> }
         print("USER INFO:", user_info["email"], user_info["name"], user_info["locale"])
-        session["current_user"] = user_info # add user info to the session
+
+        # add user info to the session
+        session["current_user"] = user_info
+
+        # store the user info in the database:
+        #service = current_app.config["FIREBASE_SERVICE"]
+        #service.update_user({
+        #    "email": user_info["email"],
+        #    "verified": user_info["email_verified"],
+        #    "given_name": user_info["given_name"],
+        #    "family_name": user_info["family_name"],
+        #    "picture": user_info["picture"],
+        #    "locale": user_info["locale"],
+        #})
+
     else:
         print("NO USER INFO")
     return redirect("/")

@@ -4,8 +4,6 @@ A web application starter template, created in Python with the Flask framework. 
 
 ![](https://user-images.githubusercontent.com/1328807/160312385-7ffbbada-4363-4b48-873d-9eca868afef0.png)
 
-> NOTE: currently the login with google functionality works, but the login with email and password is not yet implemented.
-
 ## Prerequisites
 
 This application requires a Python development environment:
@@ -38,7 +36,7 @@ This app requires a few services, for user authentication and data storage. Foll
 
 ### Google Cloud Project
 
-Visit the [Google Cloud Console](https://console.cloud.google.com). **Create a new project**, and name it. After it is created, select it from the project selection dropdown menu.
+Visit the [Google Cloud Console](https://console.cloud.google.com). Create a new project, and name it. After it is created, select it from the project selection dropdown menu.
 
 ### Google OAuth Client
 
@@ -54,7 +52,7 @@ After the client is created, note the `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECR
 
 ### Firebase Project
 
-Visit the [Google Firebase Console](https://console.firebase.google.com/) to **create a new Firebase project**. When you create the project:
+Visit the [Google Firebase Console](https://console.firebase.google.com/) to create a new Firebase project. When you create the project:
 
   1. Select the Google Cloud project you just created from the dropdown.
   2. Enable Google Analytics.
@@ -68,7 +66,7 @@ From the Firebase project's "Analytics Dashboard" menu, find the web property th
 
 If there was an issue and you don't see anything, no worries - you can click the web icon to "Add Firebase to your web app". Give the app a name and register it (hosting not necessary).
 
-You should now be able to visit [Google Analytics](https://analytics.google.com/) and find the web property you created. From Google Analytics, visit the web property's admin settings, specifically the "Data Streams" tab, and click on the stream created by Firebase. Note its "Measurement Id" (e.g. "G-XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable (see "Environment Variables" section below). Also enable "enhanced measurement".
+You should now be able to visit [Google Analytics](https://analytics.google.com/) and find the web property you created. From Google Analytics, visit the web property's admin settings, specifically the "Data Streams" tab, and click on the stream created by Firebase. Click to enable "enhanced measurement".Note the "Measurement Id" (e.g. "G-XXXXXXXXXX"), and use this value for the `GA_TRACKER_ID` environment variable (see "Environment Variables" section below).
 
 
 ### Firestore Database Setup
@@ -105,11 +103,17 @@ There will also be an "orders" collection, which will get auto-generated and pop
 
 In the future, if you want to store more information about your users, for example their settings, preferences, and activities, you can create a "users" collection and extend this app's functionality as desired.
 
-### Google APIs Service Account Credentials
+
+
+
+
+
+
+### Google Cloud Service Account Credentials
 
 To fetch data from the Firestore database (and use other Google APIs), the app will need access to a local "service account" credentials file.
 
-From the [Google API Credentials](https://console.cloud.google.com/apis/credentials) page, find the service account created during the firebase project setup process (it should be called something like "firebase-adminsdk"), or feel free to create a new service account.
+From the [Google API Credentials](https://console.cloud.google.com/apis/credentials) page, find the service account created during the Firebase project setup process (it should be called something like "firebase-adminsdk"), or feel free to create a new service account.
 
 For the chosen service account, create new JSON credentials file as necessary from the "Keys" menu, then download the resulting JSON file into the root directory of this repo, specifically named "google-credentials.json".
 
@@ -155,13 +159,10 @@ Run the local web server (then visit localhost:5000 in a browser):
 FLASK_APP=web_app flask run
 ```
 
-
-## Testing
-
-Instructions TBA
-
-
-
 ## Deploying
 
 See the [Deployer's Guide](/DEPLOYING.md) for instructions on deploying to a production server hosted by Heroku.
+
+
+
+## [License](/LICENSE.md)
