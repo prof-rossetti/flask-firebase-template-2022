@@ -68,7 +68,7 @@ From the Firebase project's "Analytics Dashboard" menu, find the web property th
 
 If there was an issue and you don't see anything, no worries - you can click the web icon to "Add Firebase to your web app". Give the app a name and register it (hosting not necessary).
 
-You should now be able to visit [Google Analytics](https://analytics.google.com/) and find the web property you created. From Google Analytics, visit the web property's admin settings, specifically the "Property Settings", and find the numeric **Property Id** (e.g. "XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable, in this format: `"UA-XXXXXXXXXX-1"` (see "Environment Variables" section below).
+You should now be able to visit [Google Analytics](https://analytics.google.com/) and find the web property you created. From Google Analytics, visit the web property's admin settings, specifically the "Data Streams" tab, and click on the stream created by Firebase. Note its "Measurement Id" (e.g. "G-XXXXXXXXXX"). Use this value for the `GA_TRACKER_ID` environment variable (see "Environment Variables" section below). Also enable "enhanced measurement".
 
 
 ### Firestore Database Setup

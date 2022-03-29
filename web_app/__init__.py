@@ -32,6 +32,7 @@ GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 
 # for google analytics (universal analytics):
 GA_TRACKER_ID = os.getenv("GA_TRACKER_ID", default="G-OOPS")
+#GA_DOMAIN = os.getenv("GA_DOMAIN", default="http://localhost:5000") # in production set to "________"
 
 
 def create_app():
@@ -58,6 +59,7 @@ def create_app():
 
     # for client-side google analytics:
     app.config["GA_TRACKER_ID"] = GA_TRACKER_ID
+    #app.config["GA_DOMAIN"] = GA_DOMAIN
 
     # set timezone to mimic production mode when running locally:
     os.environ["TZ"] = "UTC"

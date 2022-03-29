@@ -14,10 +14,25 @@
     <!-- Google Analytics  -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.GA_TRACKER_ID }}"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ config.GA_TRACKER_ID }}');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ config.GA_TRACKER_ID }}');
+
+        // add page views (not necessary, actually messes stuff up?)
+        // see: https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+        //gtag('config', '{{ config.GA_TRACKER_ID }}', {
+        //    //'page_title' : document.title,
+        //    'page_location': location.href,
+        //    'page_path': location.pathname
+        //});
+
+        // suppress warnings in firefox (not working)
+        // see: https://stackoverflow.com/questions/62569419/how-to-set-secure-attribute-of-the-cookies-used-by-google-analytics-global-sit
+        //gtag('config', '{{ config.GA_TRACKER_ID }}', {
+        //    cookie_domain: '{{ config.GA_DOMAIN }}',
+        //    cookie_flags: 'SameSite=None;Secure',
+        //})
     </script>
 
     <style>
