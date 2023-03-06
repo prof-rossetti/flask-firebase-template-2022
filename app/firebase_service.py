@@ -4,10 +4,15 @@ import os
 from pprint import pprint
 from datetime import datetime, timezone
 from operator import itemgetter
+from dotenv import load_dotenv
 
 from firebase_admin import credentials, initialize_app, firestore
 
-CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
+
+load_dotenv()
+
+DEFAULT_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
+CREDENTIALS_FILEPATH = os.getenv("GOOGLE_CREDENTIALS_FILEPATH", default=DEFAULT_FILEPATH)
 
 
 def generate_timestamp():
