@@ -129,8 +129,8 @@ FLASK_APP="web_app"
 #
 # GOOGLE OAUTH
 #
-GOOGLE_CLIENT_ID = "..."
-GOOGLE_CLIENT_SECRET = "..."
+GOOGLE_CLIENT_ID="..."
+GOOGLE_CLIENT_SECRET="..."
 
 #
 # GOOGLE ANALYTICS
@@ -161,7 +161,7 @@ FLASK_APP=web_app flask run
 
 ## Deploying
 
-See the [Deployer's Guide](/DEPLOYING.md) for instructions on deploying to a production server hosted by Heroku.
+See the [Deployer's Guide](/RENDER.md) for instructions on deploying to a production server hosted by Render.
 
 
 
