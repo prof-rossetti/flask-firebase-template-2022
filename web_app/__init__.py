@@ -35,7 +35,10 @@ GA_TRACKER_ID = os.getenv("GA_TRACKER_ID", default="G-OOPS")
 #GA_DOMAIN = os.getenv("GA_DOMAIN", default="http://localhost:5000") # in production set to "________"
 
 
-def create_app():
+def create_app(firebase_service=None):
+
+    if not firebase_service:
+        firebase_service = FirebaseService()
 
     #
     # INIT
@@ -83,7 +86,7 @@ def create_app():
     # SERVICES
     #
 
-    app.config["FIREBASE_SERVICE"] = FirebaseService()
+    app.config["FIREBASE_SERVICE"] = firebase_service
 
     #
     # ROUTES
