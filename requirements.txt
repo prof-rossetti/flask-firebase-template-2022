@@ -3,7 +3,7 @@
 python-dotenv
 
 # web application:
-Flask==2.0.0
+Flask==2.1.1
 
 # auth (login with google via oauth):
 Authlib==1.0.0
